@@ -1,6 +1,5 @@
 // API配置 - 已替换成你的地址
-const API_BASE_URL = 'https://a0aba47ad0a54c2d99b6145cb614f163-cn-hangzhou.alicloudapi.com';
-
+const API_BASE_URL = 'https://resume-analyzer-xxx.cn-hangzhou.fcapp.run';
 // DOM元素
 const uploadArea = document.getElementById('uploadArea');
 const fileInput = document.getElementById('fileInput');
@@ -304,4 +303,5 @@ function initTabs() {
             document.getElementById(`tab-${tabId}`).classList.add('active');
         });
     });
+
 }
