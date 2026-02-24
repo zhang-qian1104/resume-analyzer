@@ -1,5 +1,5 @@
 // API配置 - 已替换成你的地址
-const API_BASE_URL = 'https://resume-analyzer-xxx.cn-hangzhou.fcapp.run';
+const API_BASE_URL = 'https://resume-analyzer-rwbkcewccu.cn-hangzhou.fcapp.run';
 // DOM元素
 const uploadArea = document.getElementById('uploadArea');
 const fileInput = document.getElementById('fileInput');
@@ -305,3 +305,4 @@ function initTabs() {
     });
 
 }
+
