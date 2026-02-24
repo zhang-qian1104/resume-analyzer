@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能简历分析系统</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-robot"></i> AI智能简历分析系统</h1>
+            <p class="subtitle">上传简历，AI自动提取关键信息并匹配职位要求</p>
+        </header>
+
+        <div class="main-content">
+            <!-- 上传区域 -->
+            <div class="upload-section card">
+                <h2><i class="fas fa-cloud-upload-alt"></i> 上传简历</h2>
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-file-pdf"></i>
+                    <p>拖拽PDF文件到这里或点击上传</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    <button class="btn btn-primary" id="selectFileBtn">选择文件</button>
+                </div>
+                <div class="file-info" id="fileInfo" style="display: none;">
+                    <span id="fileName"></span>
+                    <button class="btn-icon" id="removeFileBtn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <!-- 职位描述 -->
+            <div class="job-section card">
+                <h2><i class="fas fa-briefcase"></i> 职位描述</h2>
+                <textarea 
+                    id="jobDesc" 
+                    placeholder="请输入职位描述，例如：&#10;职位：Python开发工程师&#10;要求：3年以上Python开发经验，熟悉Django/Flask框架，熟悉数据库设计..."
+                    rows="6"
+                ></textarea>
+                <div class="job-actions">
+                    <button class="btn btn-secondary" id="sampleJobBtn">
+                        <i class="fas fa-file-alt"></i> 示例职位
+                    </button>
+                    <button class="btn btn-primary" id="analyzeBtn" disabled>
+                        <i class="fas fa-magic"></i> 开始分析
+                    </button>
+                </div>
+            </div>
+
+            <!-- 加载状态 -->
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>正在分析简历，请稍候...</p>
+            </div>
+
+            <!-- 分析结果 -->
+            <div class="results-section" id="results" style="display: none;">
+                <h2><i class="fas fa-chart-bar"></i> 分析结果</h2>
+                
+                <!-- 匹配分数卡片 -->
+                <div class="score-card">
+                    <div class="score-circle" id="scoreCircle">
+                        <span id="scoreValue">0</span>
+                        <span class="score-label">匹配度</span>
+                    </div>
+                    <div class="score-details" id="scoreDetails"></div>
+                </div>
+
+                <!-- 提取信息 -->
+                <div class="info-tabs">
+                    <button class="tab-btn active" data-tab="basic">基本信息</button>
+                    <button class="tab-btn" data-tab="skills">技能清单</button>
+                    <button class="tab-btn" data-tab="experience">工作经验</button>
+                    <button class="tab-btn" data-tab="education">教育背景</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- 基本信息 -->
+                    <div class="tab-pane active" id="tab-basic">
+                        <div class="info-grid" id="basicInfo"></div>
+                    </div>
+                    
+                    <!-- 技能清单 -->
+                    <div class="tab-pane" id="tab-skills">
+                        <div class="skills-cloud" id="skillsCloud"></div>
+                    </div>
+                    
+                    <!-- 工作经验 -->
+                    <div class="tab-pane" id="tab-experience">
+                        <div class="experience-list" id="experienceList"></div>
+                    </div>
+                    
+                    <!-- 教育背景 -->
+                    <div class="tab-pane" id="tab-education">
+                        <div class="education-info" id="educationInfo"></div>
+                    </div>
+                </div>
+
+                <!-- 原始文本预览 -->
+                <div class="raw-text">
+                    <h3><i class="fas fa-file-alt"></i> 文本预览</h3>
+                    <pre id="rawTextPreview"></pre>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2024 AI智能简历分析系统 | 基于阿里云Serverless构建</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
