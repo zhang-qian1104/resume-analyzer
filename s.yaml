@@ -1,0 +1,28 @@
+edition: 1.0.0
+name: resume-analyzer
+access: default
+
+vars:
+  region: cn-hangzhou
+
+services:
+  resume-api:
+    component: devsapp/fc3
+    props:
+      region: ${vars.region}
+      functionName: resume-analyzer-new
+      runtime: python3.9
+      code: ./
+      handler: app.app
+      memorySize: 512
+      timeout: 60
+      triggers:
+        - triggerName: httpTrigger
+          triggerType: http
+          qualifier: LATEST
+          triggerConfig:
+            authType: anonymous
+            methods:
+              - GET
+              - POST
+              - OPTIONS
